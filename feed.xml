@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-11-30T10:14:39+08:00</updated><id>http://localhost:4000//</id><title type="html">Lucky is a lucky man</title><subtitle>This is my magic home.
+</subtitle><entry><title type="html">Use this jekyll theme!</title><link href="http://localhost:4000/jekyll/rubygem/2016/11/29/use-this-jekyll-theme.html" rel="alternate" type="text/html" title="Use this jekyll theme!" /><published>2016-11-29T10:50:57+08:00</published><updated>2016-11-29T10:50:57+08:00</updated><id>http://localhost:4000/jekyll/rubygem/2016/11/29/use-this-jekyll-theme</id><content type="html" xml:base="http://localhost:4000/jekyll/rubygem/2016/11/29/use-this-jekyll-theme.html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;There are many themes provided by jekyll official site, also many open source themes from others.&lt;/p&gt;
+
+&lt;p&gt;Here is the theme which I created, I will give the usage for everyone who like it and want to use or re-design it.&lt;/p&gt;
+
+&lt;p&gt;This theme is implemented from &lt;a href=&quot;http://getbootstrap.com/&quot;&gt;bootstrap 3&lt;/a&gt;, it’s responsive on every platforms.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Add this line to your Jekyll site’s Gemfile:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;zslucky&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And add this line to your Jekyll site’s &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;zslucky&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And then execute:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Or install it yourself as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install zslucky
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;Only need to add follow settings in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config&lt;/code&gt; yaml file:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# username is your name&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Lucky Zhou&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your avator from assets&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;avator_url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/assets/img/avator.jpg&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your job title&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;jobtitle&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Front-end Engineer.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your qq number&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;qq&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;444950680&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your weixin number&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;weixin&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Zsney88&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your weibo number&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;weibo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;zsney88&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# your facebook id&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;facebook&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;zsney.lzhou&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# yourselfs short description&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;user_desc&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Like open source projects, like sharing.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><category term="jekyll theme" /><summary type="html">Overview</summary></entry></feed>
