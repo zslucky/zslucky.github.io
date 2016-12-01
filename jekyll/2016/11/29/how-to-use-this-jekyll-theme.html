@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="This is my magic home.">
+  <title>How to use this jekyll theme ?!</title>
+  <meta name="description" content="">
 
-  <link rel="canonical" href="/about/">
+  <link rel="canonical" href="/jekyll/2016/11/29/how-to-use-this-jekyll-theme.html">
   <link rel="alternate" type="application/rss+xml" title="Lucky is a lucky man" href="/feed.xml">
 
   <!-- style sheets here -->
@@ -179,7 +179,124 @@
     </div>
 
     <div class="col-md-9">
-      
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to use this jekyll theme ?!</h1>
+    <p class="post-meta"><time datetime="2016-11-29T10:50:57+08:00" itemprop="datePublished">Nov 29, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <hr />
+
+<h2 id="overview">Overview</h2>
+
+<p>There are many themes provided by jekyll’s official site, also many open source themes provided by others.</p>
+
+<p>Here is the theme which I created, I will give the usage for everyone who like it and want to use or re-design it.</p>
+
+<p>This theme is implemented from <a href="http://getbootstrap.com/">bootstrap 3</a>, it’s responsive on every platforms.</p>
+
+<p>Jekyll官方提供了很多的主题可以选择，当然也有很多个人开源的主题可以使用。</p>
+
+<p>我创建了这个博客站主题，我会提供给他人使用方法或者如何重定制他。</p>
+
+<p>这个主题使用了bootstrap 3，能够自适应各种平台。</p>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#installation"><strong>Installation</strong> - 安装</a></li>
+  <li><a href="#usage"><strong>Usage</strong> - 使用方法</a></li>
+  <li><a href="#know-issues"><strong>Know issues</strong> - 已知问题</a></li>
+</ul>
+
+<hr />
+
+<h2 id="installation">Installation</h2>
+
+<p>Add this line to your Jekyll site’s <code class="highlighter-rouge">Gemfile</code>:</p>
+
+<p>添加以下代码到你的<code class="highlighter-rouge">Gemfile</code>。</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"zslucky"</span>
+</code></pre>
+</div>
+
+<p>And add this line to your Jekyll site’s <code class="highlighter-rouge">_config.yml</code>:</p>
+
+<p>然后添加以下配置到你的<code class="highlighter-rouge">_config.yml</code>文件。</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">theme</span><span class="pi">:</span> <span class="s">zslucky</span>
+</code></pre>
+</div>
+
+<p>And then execute:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bundle
+</code></pre>
+</div>
+
+<p>Or install it yourself as:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>gem install zslucky
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="usage">Usage</h2>
+
+<p>Only need to add follow settings in <code class="highlighter-rouge">_config.yml</code> yaml file:</p>
+
+<p>只需要添加以下配置到你的<code class="highlighter-rouge">_config.yml</code>文件。</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># username is your name - 站主名字</span>
+<span class="s">username</span><span class="pi">:</span> <span class="s">Lucky Zhou</span>
+<span class="c1"># your avator from assets - 头像图片路径</span>
+<span class="s">avator_url</span><span class="pi">:</span> <span class="s">/assets/img/avator.jpg</span>
+<span class="c1"># your job title - 职位名称</span>
+<span class="s">jobtitle</span><span class="pi">:</span> <span class="s">Front-end Engineer.</span>
+<span class="c1"># your qq number - qq号</span>
+<span class="s">qq</span><span class="pi">:</span> <span class="s">444950680</span>
+<span class="c1"># your weixin number - 微信号</span>
+<span class="s">weixin</span><span class="pi">:</span> <span class="s">Zsney88</span>
+<span class="c1"># your weibo number - 新浪微博号</span>
+<span class="s">weibo</span><span class="pi">:</span> <span class="s">zsney88</span>
+<span class="c1"># your facebook id - facebook号</span>
+<span class="s">facebook</span><span class="pi">:</span> <span class="s">zsney.lzhou</span>
+<span class="c1"># yourselfs short description - 个人简述</span>
+<span class="s">user_desc</span><span class="pi">:</span> <span class="s">Like open source projects, like sharing.</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="know-issues">Know issues</h2>
+
+<p>Deploy to Github Page using auto build will cause build failed due to theme unsupported. I found 2 solutions here:</p>
+
+<ol>
+  <li>Using <code class="highlighter-rouge">jekyll build</code> to build static files, then only publish all files in <code class="highlighter-rouge">_site</code> directory.</li>
+  <li>Clone this theme repo, copy it to your jekyll site.</li>
+</ol>
+
+<p>使用自动部署到Github Page会出现不支持主题的错误，这里我有2种解决方案：</p>
+
+<ol>
+  <li>
+    <p>使用 <code class="highlighter-rouge">jekyll build</code> 生成静态网站，然后仅仅只需部署 <code class="highlighter-rouge">_site</code> 目录下的文件即可。</p>
+  </li>
+  <li>
+    <p>克隆我的主题仓库到你文件下直接使用。</p>
+  </li>
+</ol>
+
+  </div>
+
+</article>
 
     </div>
 

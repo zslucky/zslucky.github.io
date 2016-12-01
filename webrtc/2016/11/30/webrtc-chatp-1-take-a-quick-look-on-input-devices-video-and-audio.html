@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>WebRTC Chapt 1 - Take a quick look on input devices video and audio</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="/webrtc/2016/11/30/webrtc-chatp-1-take-a-quick-look-on-input-devices-video-and-audio.html">
+  <link rel="alternate" type="application/rss+xml" title="Lucky is a lucky man" href="/feed.xml">
+
+  <!-- style sheets here -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/colorful.css">
+  <!-- normalize.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- javascript here -->
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Font awesome -->
+  <script src="https://use.fontawesome.com/9a561ba862.js"></script>
+</head>
+
+
+  <body>
+
+    <header>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          Lucky's Home
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/aboutme">About Me</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+</header>
+
+    <main class="container-fluid main" aria-label="Content">
+      <div class="wrapper">
+        <div class="">
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar">
+  <div class="panel panel-default">
+    <div class="panel-body sidebar_user-info">
+      <div class="sidebar_avator-container">
+        <img class="sidebar_avator" src="/assets/img/avator.jpg" />
+      </div>
+      <h3>Lucky Zhou</h3>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-info-circle" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p>Front-end Engineer.</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-qq" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p><i class="fa fa-qq" aria-hidden="true"></i> 444950680</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-weixin" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p><i class="fa fa-weixin" aria-hidden="true"></i> Zsney88</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-book" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p>Like open source projects, like sharing.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-footer sidebar_social">
+      <a href="https://github.com/zslucky"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      <a href="http://weibo.com/zsney88"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/zsney.lzhou"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Categories
+    </div>
+    <!-- List group -->
+    <div class="list-group">
+      
+        <a class="list-group-item" href="#">
+          Jekyll
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="#">
+          WebRTC
+          <span class="badge">1</span>
+        </a>
+      
+    </div>
+
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Tags
+    </div>
+    <!-- List group -->
+    <div class="list-group">
+      
+        <a class="list-group-item" href="#">
+          Css
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="#">
+          Html
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="#">
+          Javascript
+          <span class="badge">1</span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="col-md-9">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">WebRTC Chapt 1 - Take a quick look on input devices video and audio</h1>
+    <p class="post-meta"><time datetime="2016-11-30T10:50:57+08:00" itemprop="datePublished">Nov 30, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <hr />
+
+<h2 id="overview">Overview</h2>
+
+<p>Audio/Video capture was a big problem for web development for a long time. For many years we’ve had to rely on browser plugins (<code class="highlighter-rouge">Flash</code> or <code class="highlighter-rouge">Silverlight</code>) to get the job done.</p>
+
+<p>音频／视频的捕获长期以来都是网页开发的一个大问题，在过去很长一段时间内我们都是通过浏览器插件（如<code class="highlighter-rouge">Flash</code>或者<code class="highlighter-rouge">silverlight</code>等）去实现这样的功能。</p>
+
+<p>HTML5 to the rescue. It might not be apparent, but the rise of HTML5 has brought a surge of access to device hardware. <code class="highlighter-rouge">Geolocation (GPS)</code>, <code class="highlighter-rouge">the Orientation API (accelerometer)</code>, <code class="highlighter-rouge">WebGL (GPU)</code>, and the <code class="highlighter-rouge">Web Audio API (audio hardware)</code> are perfect examples. These features are ridiculously powerful, exposing high level JavaScript APIs that sit on top of the system’s underlying hardware capabilities.</p>
+
+<p>HTML5解救了我们，也许还不是很明显，但是HTML5的出现带来激增的硬件连接方式，<code class="highlighter-rouge">Geolocation (GPS)</code>、<code class="highlighter-rouge">Orientation API</code>、<code class="highlighter-rouge">WebGL (GPU)</code>和<code class="highlighter-rouge">Audio API (audio hardware)</code>都是很完美的事例，这些特性都异常的强大，且暴露一些位于系统之上的兼容系统之下硬件的高级的Javascript API。</p>
+
+<p>Support:</p>
+
+<p><code class="highlighter-rouge">getUserMedia()</code> has been supported since Chrome 21, Opera 18, and Firefox 17.</p>
+
+<p>支持：</p>
+
+<p><code class="highlighter-rouge">getUserMedia()</code> 已经支持 Chrome 21+, Opera 18+, and Firefox 17+.</p>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#feature-detection"><strong>Feature detection</strong> - 侦测特性</a></li>
+  <li><a href="#access-input-device"><strong>Access input device</strong> - 连接输入设备</a></li>
+  <li><a href="#media-constraints"><strong>Media constraints</strong> - 媒体常量</a></li>
+  <li><a href="#providing-fallback"><strong>Providing fallback</strong> - 提供失败处理</a></li>
+  <li><a href="#taking-screenshots"><strong>Taking screenshots</strong> - 截图</a></li>
+  <li><a href="#applying-effects"><strong>Applying effects</strong> - 提供效果</a>
+    <ul>
+      <li><a href="#css-filters"><strong>CSS Filters</strong> - Css滤镜</a></li>
+      <li><a href="#webgl-textures"><strong>WebGL Textures</strong> - Webgl质感</a></li>
+    </ul>
+  </li>
+  <li><a href="#web-audio-api"><strong>Web Audio API</strong> - Web音频API</a></li>
+  <li><a href="#conclusion"><strong>Conclusion</strong> - Web音频API</a></li>
+</ul>
+
+<hr />
+
+<h2 id="feature-detection">Feature detection</h2>
+
+<p>Feature detecting is a simple check for the existence of <code class="highlighter-rouge">navigator.getUserMedia</code></p>
+
+<p>侦测特性可以简单的检查已有的对象<code class="highlighter-rouge">navigator.getUserMedia</code></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">hasGetUserMedia</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!!</span><span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span> <span class="o">||</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">webkitGetUserMedia</span> <span class="o">||</span>
+            <span class="nx">navigator</span><span class="p">.</span><span class="nx">mozGetUserMedia</span> <span class="o">||</span> <span class="nx">navigator</span><span class="p">.</span><span class="nx">msGetUserMedia</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">hasGetUserMedia</span><span class="p">())</span> <span class="p">{</span>
+  <span class="c1">// Good to go!</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="s1">'getUserMedia() is not supported in your browser'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You can also use <code class="highlighter-rouge">Modernizr</code> to detect getUserMedia to avoid the vendor prefix dance yourself:</p>
+
+<p>你也可以使用<code class="highlighter-rouge">Modernizr</code>去检测getUserMedia，这可以避免你自己去处理浏览器供应商的前缀组合。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">Modernizr</span><span class="p">.</span><span class="nx">getusermedia</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">gUM</span> <span class="o">=</span> <span class="nx">Modernizr</span><span class="p">.</span><span class="nx">prefixed</span><span class="p">(</span><span class="s1">'getUserMedia'</span><span class="p">,</span> <span class="nx">navigator</span><span class="p">);</span>
+  <span class="nx">gUM</span><span class="p">({</span><span class="na">video</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="c1">//...</span>
+  <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="access-input-device">Access input device</h2>
+
+<p>To use the webcam or microphone, we need to request permission. The first parameter to <code class="highlighter-rouge">getUserMedia()</code> is an object specifying the details and requirements for each type of media you want to access. For example, if you want to access the webcam, the first parameter should be <code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code>. To use both the microphone and camera, pass <code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true,</span><span class="w"> </span><span class="err">audio:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code></p>
+
+<p>要使用摄像头和麦克风，我们需要请求权限。getUserMedia()的第一个参数指定你想要连接的媒体设备的明细的和需求。比如你想要使用摄像头(webcam),那么第一个参数应该是<code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code>，要同时使用麦克风和摄像头，需传入<code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true,</span><span class="w"> </span><span class="err">audio:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code>。</p>
+
+<p><a href="https://zslucky.github.io/webrtc-example/chapt-1/demo1.html">Live Demo</a>,
+<a href="https://github.com/zslucky/webrtc-example/blob/master/chapt-1/demo1.html">Source Code</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;video</span> <span class="na">autoplay</span><span class="nt">&gt;&lt;/video&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">errorCallback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Reeeejected!'</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="c1">// Not showing vendor prefixes.</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span><span class="na">video</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">audio</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">localMediaStream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">video</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'video'</span><span class="p">);</span>
+    <span class="nx">video</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">localMediaStream</span><span class="p">);</span>
+
+    <span class="c1">// Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.</span>
+    <span class="c1">// See crbug.com/110938.</span>
+    <span class="nx">video</span><span class="p">.</span><span class="nx">onloadedmetadata</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Ready to go. Do some stuff.</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="nx">errorCallback</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>Instead of feeding the video a URL to a media file, we’re feeding it a <code class="highlighter-rouge">Blob URL</code> obtained from a <code class="highlighter-rouge">LocalMediaStream</code> object representing the webcam.</p>
+
+<p>替代以往向video直接插入一个媒体文件URL，现在加入一个<code class="highlighter-rouge">Blob URL</code>，他包含了一个呈现摄像头内容的<code class="highlighter-rouge">LocalMediaStream</code>对象。</p>
+
+<hr />
+
+<h2 id="media-constraints">Media constraints</h2>
+
+<p>The first parameter to <code class="highlighter-rouge">getUserMedia()</code> can also be used to specify more requirements (or constraints) on the returned media stream. For example, instead of just indicating you want basic access to video (e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code>), you can additionally require the stream to be HD:</p>
+
+<p><code class="highlighter-rouge">getUserMedia()</code>的第一个参数也可以用作指定返回的媒体流对象的规格（或者限制），比如代替基础的视频(e.g. <code class="highlighter-rouge"><span class="p">{</span><span class="err">video:</span><span class="w"> </span><span class="err">true</span><span class="p">}</span></code>)，你可以额外的让他成为HD的高清视频。</p>
+
+<p><a href="https://zslucky.github.io/webrtc-example/chapt-1/demo2.html">Live Demo</a>,
+<a href="https://github.com/zslucky/webrtc-example/blob/master/chapt-1/demo2.html">Source Code</a></p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// For HD output</span>
+<span class="kd">var</span> <span class="nx">hdConstraints</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">mandatory</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">minWidth</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+      <span class="na">minHeight</span><span class="p">:</span> <span class="mi">720</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">(</span><span class="nx">hdConstraints</span><span class="p">,</span> <span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">);</span>
+
+<span class="c1">// For normal VGA output</span>
+<span class="kd">var</span> <span class="nx">vgaConstraints</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">video</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">mandatory</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">maxWidth</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span>
+      <span class="na">maxHeight</span><span class="p">:</span> <span class="mi">360</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">(</span><span class="nx">vgaConstraints</span><span class="p">,</span> <span class="nx">successCallback</span><span class="p">,</span> <span class="nx">errorCallback</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>For more configurations, see the <a href="https://w3c.github.io/mediacapture-main/getusermedia.html">constraints API</a></p>
+
+<p>更多的配置，请查阅 <a href="https://w3c.github.io/mediacapture-main/getusermedia.html">constraints API</a></p>
+
+<hr />
+
+<h2 id="providing-fallback">Providing fallback</h2>
+
+<p>For users that don’t have support for <code class="highlighter-rouge">getUserMedia()</code>, one option is to fallback to an existing video file if the API isn’t supported and/or the call fails for some reason:</p>
+
+<p>为那些不支持<code class="highlighter-rouge">getUserMedia()</code>或者处理视频出错的用户提供一个其他解决方案，一种可选的方案就是选择一个存在的视频插入。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Not showing vendor prefixes or code that works cross-browser:</span>
+
+<span class="kd">function</span> <span class="nx">fallback</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">video</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'fallbackvideo.webm'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">success</span><span class="p">(</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">video</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">stream</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fallback</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span><span class="na">video</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span> <span class="nx">success</span><span class="p">,</span> <span class="nx">fallback</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="taking-screenshots">Taking screenshots</h2>
+
+<p>The &lt;canvas&gt; API’s <code class="highlighter-rouge">ctx.drawImage(video, 0, 0)</code> method makes it trivial to draw &lt;video&gt; frames to &lt;canvas&gt;：</p>
+
+<p>&lt;canvas&gt; APIT的<code class="highlighter-rouge">ctx.drawImage(video, 0, 0)</code>方法可以简单的从&lt;video&gt;中将多帧画入&lt;canvas&gt;：</p>
+
+<p><a href="https://zslucky.github.io/webrtc-example/chapt-1/demo3.html">Live Demo</a>,
+<a href="https://github.com/zslucky/webrtc-example/blob/master/chapt-1/demo3.html">Source Code</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;video</span> <span class="na">autoplay</span><span class="nt">&gt;&lt;/video&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;canvas</span> <span class="na">style=</span><span class="s">"display:none;"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">video</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'video'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">localMediaStream</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">snapshot</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">localMediaStream</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">ctx</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+      <span class="c1">// "image/webp" works in Chrome.</span>
+      <span class="c1">// Other browsers will fall back to image/png.</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s1">'image/webp'</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">video</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">snapshot</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+
+  <span class="c1">// Not showing vendor prefixes or code that works cross-browser.</span>
+  <span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span><span class="na">video</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">video</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">stream</span><span class="p">);</span>
+    <span class="nx">localMediaStream</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">;</span>
+  <span class="p">},</span> <span class="nx">errorCallback</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="applying-effects">Applying Effects</h2>
+
+<h3 id="css-filters">CSS Filters</h3>
+
+<p>Using CSS Filters, we can apply some effects to the &lt;video&gt; as it is captured:</p>
+
+<p>使用CSS滤镜，我们可以提供一些效果给捕获的视频。</p>
+
+<p><a href="https://zslucky.github.io/webrtc-example/chapt-1/demo4.html">Live Demo</a>,
+<a href="https://github.com/zslucky/webrtc-example/blob/master/chapt-1/demo4.html">Source Code</a></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+<span class="nt">video</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">307px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">250px</span><span class="p">;</span>
+  <span class="nl">background</span><span class="p">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="p">,</span><span class="m">255</span><span class="p">,</span><span class="m">255</span><span class="p">,</span><span class="m">0.5</span><span class="p">);</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#ccc</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.grayscale</span> <span class="p">{</span>
+  <span class="nl">filter</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.sepia</span> <span class="p">{</span>
+  <span class="nl">filter</span><span class="p">:</span> <span class="n">sepia</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nc">.blur</span> <span class="p">{</span>
+  <span class="nl">filter</span><span class="p">:</span> <span class="n">blur</span><span class="p">(</span><span class="m">3px</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="o">...</span>
+<span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;video</span> <span class="na">autoplay</span><span class="nt">&gt;&lt;/video&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="kd">var</span> <span class="nx">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'grayscale'</span><span class="p">,</span> <span class="s1">'sepia'</span><span class="p">,</span> <span class="s1">'blur'</span><span class="p">,</span> <span class="s1">'brightness'</span><span class="p">,</span>
+               <span class="s1">'contrast'</span><span class="p">,</span> <span class="s1">'hue-rotate'</span><span class="p">,</span> <span class="s1">'hue-rotate2'</span><span class="p">,</span>
+               <span class="s1">'hue-rotate3'</span><span class="p">,</span> <span class="s1">'saturate'</span><span class="p">,</span> <span class="s1">'invert'</span><span class="p">,</span> <span class="s1">''</span><span class="p">];</span>
+
+<span class="kd">function</span> <span class="nx">changeFilter</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">effect</span> <span class="o">=</span> <span class="nx">filters</span><span class="p">[</span><span class="nx">idx</span><span class="o">++</span> <span class="o">%</span> <span class="nx">filters</span><span class="p">.</span><span class="nx">length</span><span class="p">];</span> <span class="c1">// loop through filters.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">effect</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">effect</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'video'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
+    <span class="s1">'click'</span><span class="p">,</span> <span class="nx">changeFilter</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<h3 id="webgl-textures">WebGL Textures</h3>
+
+<p>One amazing use case for video capture is to render live input as a WebGL texture. I will introduce it in later blog,</p>
+
+<p>另一件非常有意思的事是视频捕获可以将实时输入内容渲染为一个WebGL质感的视频。我会在之后的博客中详细介绍。</p>
+
+<hr />
+
+<h2 id="web-audio-api">Web Audio API</h2>
+
+<p>Chrome supports live microphone input from <code class="highlighter-rouge">getUserMedia()</code> to the Web Audio API for real-time effects. Piping microphone input to the Web Audio API looks like this:</p>
+
+<p>Chrome支持从<code class="highlighter-rouge">getUserMedia()</code>得到麦克风的输入内容，并可以在音频API实时生效。将麦克风输入内容管道式的传输的音频API看上去就像以下的代码：</p>
+
+<p><code class="highlighter-rouge">\\TODO</code>: Add live demo and source code.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">AudioContext</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">AudioContext</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitAudioContext</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AudioContext</span><span class="p">();</span>
+
+<span class="nx">navigator</span><span class="p">.</span><span class="nx">getUserMedia</span><span class="p">({</span><span class="na">audio</span><span class="p">:</span> <span class="kc">true</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">microphone</span> <span class="o">=</span> <span class="nx">context</span><span class="p">.</span><span class="nx">createMediaStreamSource</span><span class="p">(</span><span class="nx">stream</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">filter</span> <span class="o">=</span> <span class="nx">context</span><span class="p">.</span><span class="nx">createBiquadFilter</span><span class="p">();</span>
+
+  <span class="c1">// microphone -&gt; filter -&gt; destination.</span>
+  <span class="nx">microphone</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">filter</span><span class="p">);</span>
+  <span class="nx">filter</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">destination</span><span class="p">);</span>
+<span class="p">},</span> <span class="nx">errorCallback</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In general, device access on the web has been a tough cookie to crack. Many people have tried, few have succeeded. Most of the early ideas have never taken hold outside of a proprietary environment nor have they gained widespread adoption.</p>
+
+<p>普遍来看在网页中连接设备还是一块难啃的骨头，很多人尝试过，少部分人成功了。早期大部分的想法都没有能够带出去到真正合适的环境中或者甚至都没有能被普遍的采用。</p>
+
+<p>The real problem is that the web’s security model is very different from the native world.</p>
+
+<p>真正的问题是网页安全模型有别于原生代码环境。</p>
+
+  </div>
+
+</article>
+
+    </div>
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+
+          <a href="https://github.com/zslucky">
+            <span class="footer_icon">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </span>
+            Github
+          </a>
+
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Lucky Zhou</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
