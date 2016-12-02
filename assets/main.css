@@ -1,7 +1,9 @@
 .footer {
   border-top: solid 1px #d1d1d1;
+  clear: both;
   height: 32px;
   line-height: 32px;
+  margin: 25px;
   text-align: center; }
 
 .sidebar h3 {
