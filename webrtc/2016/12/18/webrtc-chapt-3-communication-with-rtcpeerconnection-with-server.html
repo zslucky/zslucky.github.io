@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>WebRTC Chapt 3 - Communication with RTCPeerConnection with server.</title>
+  <meta name="description" content="">
+
+  <link rel="canonical" href="/webrtc/2016/12/18/webrtc-chapt-3-communication-with-rtcpeerconnection-with-server.html">
+  <link rel="alternate" type="application/rss+xml" title="Lucky is a lucky man" href="/feed.xml">
+
+  <!-- style sheets here -->
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/colorful.css">
+  <!-- normalize.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- javascript here -->
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Font awesome -->
+  <script src="https://use.fontawesome.com/9a561ba862.js"></script>
+</head>
+
+
+  <body>
+
+    <header>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          Lucky's Home
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+</header>
+
+    <main class="container-fluid main" aria-label="Content">
+      <div class="wrapper">
+        <div class="">
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar">
+  <div class="panel panel-default">
+    <div class="panel-body sidebar_user-info">
+      <div class="sidebar_avator-container">
+        <img class="sidebar_avator" src="/assets/img/avator.jpg" />
+      </div>
+      <h3>Lucky Zhou</h3>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-info-circle" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p>Front-end Engineer.</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-qq" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p><i class="fa fa-qq" aria-hidden="true"></i> 444950680</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-weixin" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p><i class="fa fa-weixin" aria-hidden="true"></i> Zsney88</p>
+        </div>
+      </div>
+
+      <div class="sidebar_user-detail">
+        <div class="sidebar_contact-icons">
+          <!-- <p><i class="fa fa-book" aria-hidden="true"></i></p> -->
+        </div>
+        <div class="sidebar_contact-infos">
+          <p>Like open source projects, like sharing.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-footer sidebar_social">
+      <a href="https://github.com/zslucky"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      <a href="http://weibo.com/zsney88"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/zsney.lzhou"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Categories
+    </div>
+    <!-- List group -->
+    <div class="list-group">
+      
+        <a class="list-group-item" href="/category/jekyll">
+          jekyll
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="/category/webrtc">
+          webrtc
+          <span class="badge">3</span>
+        </a>
+      
+    </div>
+
+  </div>
+
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;Tags
+    </div>
+    <!-- List group -->
+    <div class="list-group">
+      
+        <a class="list-group-item" href="/tag/css">
+          css
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="/tag/html">
+          html
+          <span class="badge">1</span>
+        </a>
+      
+        <a class="list-group-item" href="/tag/javascript">
+          javascript
+          <span class="badge">3</span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="col-md-9">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">WebRTC Chapt 3 - Communication with RTCPeerConnection with server.</h1>
+    <p class="post-meta"><time datetime="2016-12-18T10:50:57+08:00" itemprop="datePublished">Dec 18, 2016</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <hr />
+
+<h2 id="overview">Overview</h2>
+
+<p>We have seen a demo that communication on the same page, here is a demo for remote communication.</p>
+
+<p>The code refer to <a href="https://bitbucket.org/webrtc/codelab/src">WeebRTC Codelab</a>, this blog refer to <a href="https://www.html5rocks.com/en/tutorials/webrtc/basics/">html5rocks</a>.</p>
+
+<hr />
+
+<h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#communication-with-servers"><strong>Communication with servers</strong> - 与服务器通讯</a>
+    <ul>
+      <li><a href="#a-simple-video-chat-client"><strong>A simple video chat client</strong> - 一个简单视频聊天客户端</a>
+        <ul>
+          <li><a href="#making-a-call"><strong>Making a call</strong> - 一次呼叫</a></li>
+          <li><a href="#signaling-with-the-channel-api"><strong>Signaling with the Channel API</strong> - 使用Signaling连同CHannel API</a></li>
+        </ul>
+      </li>
+      <li><a href="#network-topologies"><strong>Network topologies</strong> - 网络类型</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="communication-with-servers">Communication with servers</h2>
+
+<p>In the real world, WebRTC needs servers, however simple, so the following can happen:</p>
+
+<p>在真实环境中，WebRTC需要服务器，不管他多简单，所以以下的事情会发生：</p>
+
+<ul>
+  <li>Users discover each other and exchange ‘real world’ details such as names.（用户互相发现并交换详细信息比如名字）</li>
+  <li>WebRTC client applications (peers) exchange network information.（WebRTC客户端应用交换网络信息）</li>
+  <li>Peers exchange data about media such as video format and resolution.（主机端之间交换媒体数据，比如视频格式和分辨率）</li>
+  <li>WebRTC client applications traverse NAT gateways and firewalls.（WebRTC客户端应用穿越NAT网关和防火墙）</li>
+</ul>
+
+<p>In other words, WebRTC needs four types of server-side functionality:</p>
+
+<p>换句话说，WebRTC需要4中类型的服务器端功能：</p>
+
+<ul>
+  <li>User discovery and communication.（用户发现与通讯）</li>
+  <li>Signaling.（发信号）</li>
+  <li>NAT/firewall traversal.（NAT／防火墙的穿越）</li>
+  <li>Relay servers in case peer-to-peer communication fails.（主机端之间通讯失败的接力服务器）</li>
+</ul>
+
+<p><code class="highlighter-rouge">NAT</code> traversal, peer-to-peer networking, and the requirements for building a server app for user discovery and signaling, are beyond the scope of this article. Suffice to say that the <code class="highlighter-rouge">STUN</code> protocol and its extension <code class="highlighter-rouge">TURN</code> are used by the <code class="highlighter-rouge">ICE</code> framework to enable RTCPeerConnection to cope with <code class="highlighter-rouge">NAT</code> traversal and other network vagaries.</p>
+
+<p><code class="highlighter-rouge">NAT</code> 穿越、端到端网络连接和一些必备条件来搭建一个让用户发现或者发信号的服务端APP，是超出这篇文章范围的。<code class="highlighter-rouge">ICE</code>框架的<code class="highlighter-rouge">STUN</code>协议和他的扩展<code class="highlighter-rouge">TURN</code>可以让<code class="highlighter-rouge">RTCPeerConnection</code>去应付<code class="highlighter-rouge">NAT</code>穿越和其他变幻莫测的网络。</p>
+
+<p><code class="highlighter-rouge">ICE</code> is a framework for connecting peers, such as two video chat clients. Initially, <code class="highlighter-rouge">ICE</code> tries to connect peers directly, with the lowest possible latency, via <code class="highlighter-rouge">UDP</code>. In this process, <code class="highlighter-rouge">STUN</code> servers have a single task: to enable a peer behind a <code class="highlighter-rouge">NAT</code> to find out its public address and port. (Google has a couple of <code class="highlighter-rouge">STUN</code> severs)</p>
+
+<p><code class="highlighter-rouge">ICE</code>是一个用于端到端连接框架，比如两个视屏聊天的客户端。起初，<code class="highlighter-rouge">ICE</code>尝试通过UDP直接连接两端，尽可能利用最低的延时。在这个过程中，<code class="highlighter-rouge">STUN</code>服务器有一个单一的任务：让一个位于NAT背后的主机端可以去找出他的公网地址和端口。（谷歌有很多<code class="highlighter-rouge">STUN</code>服务器）</p>
+
+<p><img src="/static/webrtc/chapt3-stun.png" alt="STUN" /></p>
+
+<p>If UDP fails, <code class="highlighter-rouge">ICE</code> tries TCP: first HTTP, then HTTPS. If direct connection fails—in particular, because of enterprise NAT traversal and firewalls—ICE uses an intermediary (relay) TURN server. In other words, ICE will first use STUN with UDP to directly connect peers and, if that fails, will fall back to a TURN relay server. The expression ‘finding candidates’ refers to the process of finding network interfaces and ports.</p>
+
+<p>如果UDP失败了，<code class="highlighter-rouge">ICE</code>会尝试TCP：先HTTP，然后HTTPS。如果直接连接因特殊情况失败，原因是企业级NAT穿越和ICE防火墙使用了<code class="highlighter-rouge">TURN</code>作为中间件。换句话说，<code class="highlighter-rouge">ICE</code>会首先使用UDP的STUN来直接连接主机端，如果失败了，就会启用备用方案使用TURN服务器接力，表达式’finding candidates’退回到流程中的查找网络接口和端口号。</p>
+
+<p><img src="/static/webrtc/chapt3-datapathways.png" alt="Data Path Ways" /></p>
+
+<h3 id="a-simple-video-chat-client">A simple video chat client</h3>
+
+<p>The demo starts by running the initialize() function:</p>
+
+<p>这个例子从<code class="highlighter-rouge">initialize()</code>开始：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Initializing; room=99688636."</span><span class="p">);</span>
+  <span class="nx">card</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"card"</span><span class="p">);</span>
+  <span class="nx">localVideo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"localVideo"</span><span class="p">);</span>
+  <span class="nx">miniVideo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"miniVideo"</span><span class="p">);</span>
+  <span class="nx">remoteVideo</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"remoteVideo"</span><span class="p">);</span>
+  <span class="nx">resetStatus</span><span class="p">();</span>
+  <span class="nx">openChannel</span><span class="p">(</span><span class="s1">'AHRlWrqvgCpvbd9B-Gl5vZ2F1BlpwFv0xBUwRgLF/* ...*/'</span><span class="p">);</span>
+  <span class="nx">doGetUserMedia</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that values such as the room variable and the token used by <code class="highlighter-rouge">openChannel()</code>, are provided by the Google App Engine app itself。</p>
+
+<p>注意那些被<code class="highlighter-rouge">openChannel()</code>使用的值，如房间号和token，都是由google app引擎自己提供的。</p>
+
+<p>This code initializes variables for the HTML video elements that will display video streams from the local camera (localVideo) and from the camera on the remote client (remoteVideo). <code class="highlighter-rouge">resetStatus()</code> simply sets a status message.</p>
+
+<p>这段代码为HTML video元素初始化数据，之后会将本地摄像头的视频流和远程摄客户端摄像头内容展现出来。<code class="highlighter-rouge">resetStatus()</code>简单的重置消息状态。</p>
+
+<p>The <code class="highlighter-rouge">openChannel()</code> function sets up messaging between WebRTC clients:</p>
+
+<p><code class="highlighter-rouge">openChannel()</code>功能建立起了WebRTC客户端之间的消息传输：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">openChannel</span><span class="p">(</span><span class="nx">channelToken</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Opening channel."</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">channel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">goog</span><span class="p">.</span><span class="nx">appengine</span><span class="p">.</span><span class="nx">Channel</span><span class="p">(</span><span class="nx">channelToken</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'onopen'</span><span class="p">:</span> <span class="nx">onChannelOpened</span><span class="p">,</span>
+    <span class="s1">'onmessage'</span><span class="p">:</span> <span class="nx">onChannelMessage</span><span class="p">,</span>
+    <span class="s1">'onerror'</span><span class="p">:</span> <span class="nx">onChannelError</span><span class="p">,</span>
+    <span class="s1">'onclose'</span><span class="p">:</span> <span class="nx">onChannelClosed</span>
+  <span class="p">};</span>
+  <span class="nx">socket</span> <span class="o">=</span> <span class="nx">channel</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">handler</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For signaling, this demo uses the Google App Engine <code class="highlighter-rouge">Channel API</code>, which enables messaging between JavaScript clients without polling.</p>
+
+<p>对于<code class="highlighter-rouge">Signaling</code>部分，这个例子使用了Google App Engine的Channel API, 他可以让消息在javascript客户端之间获得。</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">Channel API</code> will be turned off on October 31, 2017. See annoucement <a href="https://cloud.google.com/appengine/docs/deprecations/channel">https://cloud.google.com/appengine/docs/deprecations/channel</a></p>
+
+  <p><code class="highlighter-rouge">Channel API</code>将会在2017/10/01被google关闭，看申明<a href="https://cloud.google.com/appengine/docs/deprecations/channel">https://cloud.google.com/appengine/docs/deprecations/channel</a></p>
+</blockquote>
+
+<p><img src="/static/webrtc/chapt3-apprtcArchitecture.png" alt="AppRTC Architecture" /></p>
+
+<p>Establishing a channel with the Channel API works like this:</p>
+
+<p>利用<code class="highlighter-rouge">Channel API</code>来建立一个频道工作看起来如下：</p>
+
+<ol>
+  <li>Client A generates a unique ID. （客户端A生成一个唯一的ID）</li>
+  <li>Client A requests a Channel token from the App Engine app, passing its ID. （客户端A向App Engine app传入他的ID并请求一个Channel的token）</li>
+  <li>App Engine app requests a channel and a token for the client’s ID from the Channel API. （App Engine app向Channel API为客户端的ID请求一个频道和一个token）</li>
+  <li>App sends the token to Client A. （App 发送这个Token给客户端A）</li>
+  <li>Client A opens a socket and listens on the channel set up on the server. （客户端A打开一个socket并监听这个创建在服务器上的频道）</li>
+</ol>
+
+<p><img src="/static/webrtc/chapt3-channelEstablishing.png" alt="Channel Establishing" /></p>
+
+<p>Sending a message works like this:</p>
+
+<p>发送消息的工作看起来如下：</p>
+
+<ol>
+  <li>Client B makes a POST request to the App Engine app with an update. （客户端B向App Engine应用发起一个带有更新的POST请求）</li>
+  <li>The App Engine app passes a request to the channel. （App Engine应用将请求传递给频道）</li>
+  <li>The channel carries a message to Client A. （频道从客户端A抓去一条消息）</li>
+  <li>Client A’s onmessage callback is called. （客户端A的onmessage回掉会被触发）</li>
+</ol>
+
+<p><img src="/static/webrtc/chapt3-channelSending.png" alt="Channel Sending" /></p>
+
+<p>Just to reiterate: signaling messages are communicated via whatever mechanism the developer chooses: the signaling mechanism is not specified by WebRTC. The Channel API is used in this demo, but other methods (such as WebSocket) could be used instead.</p>
+
+<p>仅仅是重申：signaling消息可以通过开发者选择的任何一种机制来通信：signaling机制并不是WebRTC特定的。这个例子中使用的是Channel API，但是其他方式（比如WebSocket）也可以用来替代。</p>
+
+<p>After the call to openChannel(), the <code class="highlighter-rouge">getUserMedia()</code> function called by initialize() checks if the browser supports the getUserMedia API. If all is well, onUserMediaSuccess is called:</p>
+
+<p>在执行openChannel()之后，initialize()当中的<code class="highlighter-rouge">getUserMedia()</code>方法会检查浏览器是否支持getUserMedia API。如果所有都很好，onUserMediaSuccess会被执行。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">onUserMediaSuccess</span><span class="p">(</span><span class="nx">stream</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User has granted access to local media."</span><span class="p">);</span>
+  <span class="c1">// Call the polyfill wrapper to attach the media stream to this element.</span>
+  <span class="nx">attachMediaStream</span><span class="p">(</span><span class="nx">localVideo</span><span class="p">,</span> <span class="nx">stream</span><span class="p">);</span>
+  <span class="nx">localVideo</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">opacity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">localStream</span> <span class="o">=</span> <span class="nx">stream</span><span class="p">;</span>
+  <span class="c1">// Caller creates PeerConnection.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">initiator</span><span class="p">)</span> <span class="nx">maybeStart</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This causes video from the local camera to be displayed in the localVideo element, by creating an object (Blob) URL for the camera’s data stream and then setting that URL as the src for the element. (createObjectURL is used here as a way to get a URI for an ‘in memory’ binary resource, i.e. the LocalDataStream for the video.) The data stream is also set as the value of localStream, which is subsequently made available to the remote user.</p>
+
+<p>这个示例中本地摄像头的视频将会展现在localVideo元素中，这是通过创建BLOB URL来设置摄像头的数据流，然后将URL作为元素的数据源。（createObjectURL被用作是一种获取存在于内存中二进制数据URL的方法，比如视频的LocalDataStream对象）数据流也会同时被设置到localStream变量中，他会经常性对远程用户表现为可用状态。</p>
+
+<p>Prepare to call, use maybeStart():</p>
+
+<p>准备去执行，使用maybeStart()：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">maybeStart</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">started</span> <span class="o">&amp;&amp;</span> <span class="nx">localStream</span> <span class="o">&amp;&amp;</span> <span class="nx">channelReady</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="nx">createPeerConnection</span><span class="p">();</span>
+    <span class="c1">// ...</span>
+    <span class="nx">pc</span><span class="p">.</span><span class="nx">addStream</span><span class="p">(</span><span class="nx">localStream</span><span class="p">);</span>
+    <span class="nx">started</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="c1">// Caller initiates offer to peer.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">initiator</span><span class="p">)</span>
+      <span class="nx">doCall</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This function uses a handy construct when working with multiple asynchronous callbacks: maybeStart() may be called by any one of several functions, but the code in it is run only when localStream has been defined and channelReady has been set to true and communication hasn’t already started. So—if a connection hasn’t already been made, and a local stream is available, and a channel is ready for signaling, a connection is created and passed the local video stream. Once that happens, started is set to true, so a connection won’t be started more than once.</p>
+
+<p>这个方法使用一个好用的构造来处理当多个异步回调同时工作的情况：maybeStart() 可能会被众多方法中的任何一个调用，但是代码只会在当localStream被定义，channelReady被设置为true还有通讯还没有开始时执行。所以如果一个连接还没开始、本地数据流已经可用、一个频道已经为signaling准备好，一个连接被创建和传入本地视频流，当出现以上情况，started会被设置成true，所以一个连接不会被开始超过一次。</p>
+
+<h4 id="making-a-call">Making a call</h4>
+
+<p><code class="highlighter-rouge">createPeerConnection()</code>, called by maybeStart(), is where the real action begins:</p>
+
+<p><code class="highlighter-rouge">createPeerConnection()</code>, 会被maybeStart()调用，这是真正行动的开始：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">createPeerConnection</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">pc_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"iceServers"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"url"</span><span class="p">:</span> <span class="s2">"stun:stun.l.google.com:19302"</span><span class="p">}]};</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Create an RTCPeerConnection via the polyfill (adapter.js).</span>
+    <span class="nx">pc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RTCPeerConnection</span><span class="p">(</span><span class="nx">pc_config</span><span class="p">);</span>
+    <span class="nx">pc</span><span class="p">.</span><span class="nx">onicecandidate</span> <span class="o">=</span> <span class="nx">onIceCandidate</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Created RTCPeerConnnection with config:\n"</span> <span class="o">+</span> <span class="s2">"  \""</span> <span class="o">+</span>
+      <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">pc_config</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"\"."</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Failed to create PeerConnection, exception: "</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s2">"Cannot create RTCPeerConnection object; WebRTC is not supported by this browser."</span><span class="p">);</span>
+      <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">onconnecting</span> <span class="o">=</span> <span class="nx">onSessionConnecting</span><span class="p">;</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">onopen</span> <span class="o">=</span> <span class="nx">onSessionOpened</span><span class="p">;</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">onaddstream</span> <span class="o">=</span> <span class="nx">onRemoteStreamAdded</span><span class="p">;</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">onremovestream</span> <span class="o">=</span> <span class="nx">onRemoteStreamRemoved</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The underlying purpose is to set up a connection, using a STUN server, with <code class="highlighter-rouge">onIceCandidate()</code> as the callback (see above for an explanation of ICE, STUN and ‘candidate’). Handlers are then set for each of the <code class="highlighter-rouge">RTCPeerConnection</code> events: when a session is connecting or open, and when a remote stream is added or removed. In fact, in this example these handlers only log status messages—except for <code class="highlighter-rouge">onRemoteStreamAdded()</code>, which sets the source for the remoteVideo element:</p>
+
+<p>以下代码意图为建立一个连接，利用STUN服务器并把<code class="highlighter-rouge">onIceCandidate()</code>作为回调（ICE, STUN和’candidate’参考之前解释）。每个<code class="highlighter-rouge">RTCPeerConnection</code>事件都会被赋予句柄：当一个连接会话开始，并且远程数据流被添加或移除，实际上，在这个事例中这些句柄只是记录<code class="highlighter-rouge">onRemoteStreamAdded()</code>为remoteVideo元素添加数据源时的状态：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">onRemoteStreamAdded</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="nx">miniVideo</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">localVideo</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
+  <span class="nx">attachMediaStream</span><span class="p">(</span><span class="nx">remoteVideo</span><span class="p">,</span> <span class="nx">event</span><span class="p">.</span><span class="nx">stream</span><span class="p">);</span>
+  <span class="nx">remoteStream</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">stream</span><span class="p">;</span>
+  <span class="nx">waitForRemoteVideo</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Once <code class="highlighter-rouge">createPeerConnection()</code> has been invoked in <code class="highlighter-rouge">maybeStart()</code>, a call is intitiated by creating and offer and sending it to the callee:</p>
+
+<p>一旦 <code class="highlighter-rouge">createPeerConnection()</code> 被<code class="highlighter-rouge">maybeStart()</code>调用，一个初始化的请求会被发送给被叫者。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">doCall</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending offer to peer."</span><span class="p">);</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">createOffer</span><span class="p">(</span><span class="nx">setLocalAndSendMessage</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">mediaConstraints</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The offer creation process here is similar to the no-signaling example above but, in addition, a message is sent to the remote peer, giving a serialized SessionDescription for the offer. This process is handled by <code class="highlighter-rouge">setLocalAndSendMessage()</code>:</p>
+
+<p>这个offer创建过程类似于no-signaling的例子，但是事实上一条消息被发送至了远程主机端，并给予offer一个序列化的SessionDescription，这个过程被<code class="highlighter-rouge">setLocalAndSendMessage()</code>所处理。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">setLocalAndSendMessage</span><span class="p">(</span><span class="nx">sessionDescription</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Set Opus as the preferred codec in SDP if Opus is present.</span>
+  <span class="nx">sessionDescription</span><span class="p">.</span><span class="nx">sdp</span> <span class="o">=</span> <span class="nx">preferOpus</span><span class="p">(</span><span class="nx">sessionDescription</span><span class="p">.</span><span class="nx">sdp</span><span class="p">);</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">setLocalDescription</span><span class="p">(</span><span class="nx">sessionDescription</span><span class="p">);</span>
+  <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">sessionDescription</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h4 id="signaling-with-the-channel-api">Signaling with the Channel API</h4>
+
+<p>The <code class="highlighter-rouge">onIceCandidate()</code> callback invoked when the RTCPeerConnection is successfully created in <code class="highlighter-rouge">createPeerConnection()</code> sends information about candidates as they are ‘gathered’:</p>
+
+<p>当RTCPeerConnection在<code class="highlighter-rouge">createPeerConnection()</code>被成功创建，<code class="highlighter-rouge">onIceCandidate()</code>回调函数会被调用，然后把candidates信息发送出去。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">onIceCandidate</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">candidate</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sendMessage</span><span class="p">({</span><span class="na">type</span><span class="p">:</span> <span class="s1">'candidate'</span><span class="p">,</span>
+      <span class="na">label</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">sdpMLineIndex</span><span class="p">,</span>
+      <span class="na">id</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">sdpMid</span><span class="p">,</span>
+      <span class="na">candidate</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">candidate</span><span class="p">});</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"End of candidates."</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Outbound messaging, from the client to the server, is done by <code class="highlighter-rouge">sendMessage()</code> with an XHR request:</p>
+
+<p>发送信息，从客户端岛服务端，由<code class="highlighter-rouge">sendMessage()</code>的XHR请求完成：</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">msgString</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'C-&gt;S: '</span> <span class="o">+</span> <span class="nx">msgString</span><span class="p">);</span>
+  <span class="nx">path</span> <span class="o">=</span> <span class="s1">'/message?r=99688636'</span> <span class="o">+</span> <span class="s1">'&amp;u=92246248'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+  <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'POST'</span><span class="p">,</span> <span class="nx">path</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">msgString</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>XHR works fine for sending signaling messages from the client to the server, but some mechanism is needed for server-to-client messaging: this application uses the Google App Engine Channel API. Messages from the API are handled by <code class="highlighter-rouge">processSignalingMessage()</code>:</p>
+
+<p>XHR可以很好的从客户端向服务端发送signaling信息，但是有些原理是必须被用到处理服务器向客户端发消息的：这个客户端用了<code class="highlighter-rouge">processSignalingMessage()</code>来处理Google App Engine的Channel API</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">processSignalingMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'offer'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Callee creates PeerConnection</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">initiator</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">started</span><span class="p">)</span>
+      <span class="nx">maybeStart</span><span class="p">();</span>
+
+    <span class="nx">pc</span><span class="p">.</span><span class="nx">setRemoteDescription</span><span class="p">(</span><span class="k">new</span> <span class="nx">RTCSessionDescription</span><span class="p">(</span><span class="nx">msg</span><span class="p">));</span>
+    <span class="nx">doAnswer</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'answer'</span> <span class="o">&amp;&amp;</span> <span class="nx">started</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">pc</span><span class="p">.</span><span class="nx">setRemoteDescription</span><span class="p">(</span><span class="k">new</span> <span class="nx">RTCSessionDescription</span><span class="p">(</span><span class="nx">msg</span><span class="p">));</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'candidate'</span> <span class="o">&amp;&amp;</span> <span class="nx">started</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">candidate</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RTCIceCandidate</span><span class="p">({</span>
+      <span class="na">sdpMLineIndex</span><span class="p">:</span><span class="nx">msg</span><span class="p">.</span><span class="nx">label</span><span class="p">,</span>
+      <span class="na">candidate</span><span class="p">:</span><span class="nx">msg</span><span class="p">.</span><span class="nx">candidate</span>
+    <span class="p">});</span>
+    <span class="nx">pc</span><span class="p">.</span><span class="nx">addIceCandidate</span><span class="p">(</span><span class="nx">candidate</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'bye'</span> <span class="o">&amp;&amp;</span> <span class="nx">started</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">onRemoteHangup</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If the message is an answer from a peer (a response to an offer), RTCPeerConnection sets the remote SessionDescription and communication can begin. If the message is an offer (i.e. a message from the callee) RTCPeerConnection sets the remote SessionDescription, sends an answer to the callee, and starts connection by invoking the RTCPeerConnection <code class="highlighter-rouge">startIce()</code> method:</p>
+
+<p>如果消息是来自一个主机端的answer（一个offer的回复），RTCPeerConnection会将其设置为远程SessionDescription，并且开始通讯。如果一个消息是offer（一个消息来自被叫者）RTCPeerConnection将其设置为远程SessionDescription，然后发送一个answer给被叫者，并调用<code class="highlighter-rouge">startIce()</code>开启连接。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">doAnswer</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Sending answer to peer."</span><span class="p">);</span>
+  <span class="nx">pc</span><span class="p">.</span><span class="nx">createAnswer</span><span class="p">(</span><span class="nx">setLocalAndSendMessage</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">mediaConstraints</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>And that’s it! The caller and callee have discovered each other and exchanged information about their capabilities, a call session is initiated, and real-time data communication can begin.</p>
+
+<p>这就是它！呼叫者和被叫者互相发现了对方并且交换了信息，一次回话被出示换了，并且实时的数据通讯可以开始了。</p>
+
+<h3 id="network-topologies">Network topologies</h3>
+
+<p><code class="highlighter-rouge">WebRTC</code> as currently implemented only supports one-to-one communication, but could be used in more complex network scenarios: for example, with multiple peers each communicating each other directly, peer-to-peer, or via a Multipoint Control Unit (MCU), a server that can handle large numbers of participants and do selective stream forwarding, and mixing or recording of audio and video:</p>
+
+<p><code class="highlighter-rouge">WebRTC</code>目前只实现了单对单的通讯，但是可以被应用在更复杂的场景：比如，多个主机端单对单相互直接连接，或者通过MCU，他能处理大量参与者，做先择性数据流转发，还有混合及记录音频视频。</p>
+
+<p><img src="/static/webrtc/chapt3-mcu.png" alt="MCU" /></p>
+
+  </div>
+
+</article>
+
+    </div>
+
+  </div>
+</div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+
+          <a href="https://github.com/zslucky">
+            <span class="footer_icon">
+              <i class="fa fa-github" aria-hidden="true"></i>
+            </span>
+            Github
+          </a>
+
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Lucky Zhou</span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+
+</html>
