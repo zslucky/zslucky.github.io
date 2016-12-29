@@ -1,2 +1,0 @@
-# jekyll-blog
-jekyll blog
