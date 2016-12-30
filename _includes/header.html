@@ -1,3 +1,9 @@
-<header class="header">
-  <p><a href="#">Home</a>&nbsp;|&nbsp;<a href="#">About Me</a></p>
+<header class="header flex-container container">
+  <p class="header-avator"><img src="/assets/images/site_title.jpg" /></p>
+  <p class="header-nav"><a href="#">Home</a>&nbsp;|&nbsp;<a href="#">About Me</a></p>
+  <p class="header-social">
+    <a href="https://github.com/{{ site.github_username }}"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+    <a href="http://weibo.com/{{ site.weibo }}"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+    <a href="https://www.facebook.com/{{ site.facebook }}"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+  </p>
 </header>

@@ -1,0 +1,84 @@
+.sidebar {
+  flex: $sidebarSize;
+  text-transform: capitalize;
+
+  @media only screen and (min-width: $boundLargeScreenSize) {
+    flex: $sidebarLargeSize;
+  }
+
+  @media only screen and (min-width: $boundSize) {
+    align-self: flex-start;
+  }
+
+  h2 {
+    border-bottom: solid .2rem $normalFont;
+    font-size: 2.4rem;
+    height: 4.2rem;
+    line-height: 4.2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.sidebar-container {
+  border-radius: 0;
+  padding: 1.5rem;
+
+  @media only screen and (min-width: $boundSize) {
+    border-radius: .8rem 0 0 0;
+  }
+}
+
+.sidebar-category {
+  & > ul > li {
+    border-bottom: dashed .1rem $normalFont;
+    display: flex;
+    font-size: 1.8rem;
+    height: 3.2rem;
+    justify-content: space-between;
+    line-height: 3.2rem;
+  }
+
+  & > ul > li i {
+    align-self: center;
+  }
+
+  & > ul > li  a {
+    display: block;
+    flex: 1;
+    padding-left: .5rem;
+    transition: color 0.2s ease-in-out,
+                transform 0.2s ease-in-out
+  }
+
+  & > ul > li  a:hover {
+    color: $linkHoverFont;
+    font-weight: bold;
+    transform: translateX(1rem);
+  }
+
+  & > ul > li:last-child {
+    border-bottom: none;
+  }
+}
+
+.sidebar-tag {
+  border-radius: 0;
+  margin-top: 1.5rem;
+
+  h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  & > ul > li {
+    display: inline-block;
+    position: relative;
+  }
+
+  & > ul > li span {
+    background-color: $linkFont;
+    left: -.5rem;
+    position: absolute;
+    top: -.5rem;
+    z-index: 2;
+  }
+}

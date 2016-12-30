@@ -1,6 +1,8 @@
 ---
 layout: post
 title: WebRTC Chapt 3 - Communication with RTCPeerConnection with server.
+chineseTitle: WebRTC 第三章 - 使用RTCPeerConnection连同Server进行通讯
+icon: exchange
 date:   2016-12-18 10:50:57 +0800
 published: true
 categories:

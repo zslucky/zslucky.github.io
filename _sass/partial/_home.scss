@@ -1,0 +1,41 @@
+.home {
+  padding-bottom: 3.5rem;
+
+  h2 {
+    border-bottom: solid .2rem $normalFont;
+    font-size: 2.4rem;
+    height: 4.2rem;
+    line-height: 4.2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.home_content-item {
+  margin: 3rem;
+
+  & > h3 {
+    font-size: 2rem;
+    line-height: 3.2rem;
+
+    i {
+      color: $normalFont;
+    }
+
+    a {
+      color: $contentTitleFont;
+    }
+
+    a:hover {
+      color: $contentTitleHoverFont;
+      text-decoration: underline;
+    }
+  }
+
+  & > h4 {
+    line-height: 2.6rem;
+  }
+
+  & > p {
+    line-height: 2.4rem;
+  }
+}

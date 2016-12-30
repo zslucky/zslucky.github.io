@@ -1,6 +1,8 @@
 ---
 layout: post
 title: WebRTC Chapt 2 - Communication with RTCPeerConnection without server.
+chineseTitle: WebRTC 第二章 - 使用RTCPeerConnection进行不通过Server的通讯
+icon: exchange
 date:   2016-12-02 10:50:57 +0800
 published: true
 categories:

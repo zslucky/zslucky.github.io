@@ -1,6 +1,8 @@
 ---
 layout: post
 title: WebRTC Chapt 1 - Take a quick look on input devices video and audio
+chineseTitle: WebRTC 第一章 - 简单快速看下终端输入设备（视频和音频）
+icon: exchange
 date:   2016-11-30 10:50:57 +0800
 categories:
   - javascript

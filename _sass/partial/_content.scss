@@ -1,0 +1,22 @@
+.content {
+  flex: $contentSize;
+  padding: 1.5rem 0 0 0;
+
+  @media only screen and (min-width: $boundSize) {
+    align-self: flex-start;
+    padding: 0 0 0 1.5rem;
+  }
+
+  @media only screen and (min-width: $boundLargeScreenSize) {
+    flex: $contentLargeSize;
+  }
+}
+
+.content-container {
+  border-radius: 0;
+  padding-top: 1.5rem;
+
+  @media only screen and (min-width: $boundSize) {
+    border-radius: 0 .8rem 0 0;
+  }
+}

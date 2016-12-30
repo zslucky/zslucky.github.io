@@ -1,11 +1,18 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
+# Mobile first design for every styles
 ---
 @charset "utf-8";
 
 @import "var-colors";
+@import "var-constants";
 
 @import "global";
 
+@import "partial/common";
+@import "partial/base";
 @import "partial/header";
+@import "partial/home";
 @import "partial/footer";
+@import "partial/sidebar";
+@import "partial/content";

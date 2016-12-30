@@ -1,0 +1,20 @@
+// Define responsive bound
+// This is the bound for PC and mobile.
+$boundSize: 768px;
+$boundLargeScreenSize: 1200px;
+
+// Define block z-index
+$headerZIndex: 99;
+$footerZIndex: 99;
+
+// Define header flex layout size
+$headerAvatar: 1;
+$headerNav: 5;
+$headerSocial: 8;
+
+// Sidebar and content's flex size
+$sidebarSize: 2;
+$contentSize: 5;
+
+$sidebarLargeSize: 2;
+$contentLargeSize: 7;

@@ -1,0 +1,28 @@
+<div class="container sidebar-container sidebar-category">
+  <h2><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Categories</h2>
+  <ul>
+    {% for category in site.categories %}
+      <li>
+        <i class="fa fa-caret-right" aria-hidden="true"></i>
+        <a href="/category/{{ category | first }}">
+          {{ category | first }}
+        </a>
+        <span class="badge">{{ category | last | size }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="container sidebar-container sidebar-tag">
+  <h2><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;&nbsp;tags</h2>
+  <ul>
+    {% for tag in site.tags %}
+      <li>
+        <span class="badge">{{ tag | last | size }}</span>
+        <a class='tag' href="/tag/{{ tag | first }}">
+          {{ tag | first }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,10 +1,58 @@
 .header {
-  background-color: $primaryColor;
-  box-shadow: 0 .8rem 3.5rem 0 $shadowColor;
-  font-size: 1.2rem;
-  height: 3.6rem;
-  line-height: 3.6rem;
-  position: fixed;
-  top: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+  top: 1.2rem;
   width: 100%;
+  z-index: $headerZIndex;
+
+  & > * {
+    display: flex;
+
+    @media only screen and (min-width: $boundSize) {
+      padding-left: 2.5rem;
+    }
+  }
+}
+
+.header-avator {
+  flex: $headerAvatar;
+  height: 7.2rem;
+
+  @media only screen and (min-width: $boundSize) {
+    height: auto;
+  }
+
+  & > img {
+    align-self: center;
+    border-radius: 50%;
+    height: 6.4rem;
+    width: 6.4rem;
+
+    @media only screen and (min-width: $boundSize) {
+      height: 3.2rem;
+      width: 3.2rem;
+    }
+  }
+}
+
+.header-nav {
+  flex: $headerNav;
+  height: 4.2rem;
+  line-height: 4.2rem;
+}
+
+.header-social {
+  display: flex;
+  flex: $headerSocial;
+  justify-content: flex-end;
+
+  & > a {
+    color: $normalFont;
+    font-size: 1.2rem;
+    padding: .5rem .3rem;
+
+    @media only screen and (min-width: $boundSize) {
+      padding: 0 .3rem;
+    }
+  }
 }
