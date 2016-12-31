@@ -4,23 +4,29 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   background-image: url('/assets/images/global_bg.png');
   color: $normalFont;
   font-family: 'Didact Gothic', sans-serif;
+  min-height: 100%;
+  position: relative;
 }
 
-a {
-  color: $linkFont;
-  text-decoration: none;
-}
+body {
+  a {
+    color: $linkFont;
+    font-weight: bold;
+  }
 
-a:hover {
-  color: $linkHoverFont;
-}
+  a:hover {
+    color: $linkHoverFont;
+    text-decoration: none;
+  }
 
-a:active {
-  color: $linkFont;
+  a:active {
+    color: $linkFont;
+  }
 }

@@ -4,6 +4,20 @@ layout: base
 
 <article class="post">
 
+  <div class="post_header">
+    <h2>{{ page.title }}</h2>
+    <h3>{{ page.chineseTitle }}</h3>
+    <p>
+     <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.date | date: "%Y-%m-%d" }}
+     &nbsp;|&nbsp;
+     {% for tag in page.tags %}
+        <a class='tag' href="/tag/{{ tag }}">
+          {{ tag }}
+        </a>
+      {% endfor %}
+    </p>
+  </div>
+
   <div>
     {{ content }}
   </div>

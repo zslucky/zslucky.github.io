@@ -7,3 +7,20 @@
     white-space: pre-wrap;
   }
 }
+
+.post_header {
+  text-align: center;
+
+  h2 {
+    color: $postHeadFont;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  ul > li {
+    display: inline-block;
+  }
+}

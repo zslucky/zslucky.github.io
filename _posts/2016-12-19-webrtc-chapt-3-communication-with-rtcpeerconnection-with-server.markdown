@@ -28,7 +28,7 @@ The code refer to [WeebRTC Codelab](https://bitbucket.org/webrtc/codelab/src), t
 - [**Communication with servers** - 与服务器通讯](#communication-with-servers)
   - [**A simple video chat client** - 一个简单视频聊天客户端](#a-simple-video-chat-client)
     - [**Making a call** - 一次呼叫](#making-a-call)
-    - [**Signaling with the Channel API** - 使用Signaling连同CHannel API](#signaling-with-the-channel-api)
+    - [**Signaling with the Channel API** - 使用Signaling连同Channel API](#signaling-with-the-channel-api)
   - [**Network topologies** - 网络类型](#network-topologies)
 
 ---
