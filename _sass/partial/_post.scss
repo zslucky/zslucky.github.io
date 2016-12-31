@@ -1,0 +1,9 @@
+
+.post {
+  padding: 5.5rem;
+
+  // Override and re-style the markdown.
+  .highlight {
+    white-space: pre-wrap;
+  }
+}

@@ -4,6 +4,8 @@
 ---
 @charset "utf-8";
 
+@import "minima";
+
 @import "var-colors";
 @import "var-constants";
 
@@ -16,3 +18,4 @@
 @import "partial/footer";
 @import "partial/sidebar";
 @import "partial/content";
+@import "partial/post";

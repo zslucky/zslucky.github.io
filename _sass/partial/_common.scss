@@ -47,7 +47,7 @@
   position: relative;
   margin: 0 1rem 1rem 0;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.1s ease-in-out;
 }
 
 .tag::before {
@@ -63,7 +63,7 @@
 }
 
 .tag::after {
-  background: $primaryColor;
+  background-color: $primaryColor;
   border-bottom: 1.3rem solid transparent;
   border-left: 1rem solid #eee;
   border-top: 1.3rem solid transparent;
@@ -74,11 +74,11 @@
 }
 
 .tag:hover {
-  background-color: $normalFont;
+  background-color: $linkFont;
   box-shadow: inset 0 .1rem rgba(0, 0, 0, 0.25);
   color: $primaryColor;
 }
 
 .tag:hover::after {
-   border-left-color: $normalFont;
+   border-left-color: $linkFont;
 }

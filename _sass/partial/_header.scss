@@ -1,9 +1,16 @@
 .header {
   font-size: 1.8rem;
+  margin: 0;
+  padding: 0 1.5rem;
   position: relative;
   top: 1.2rem;
   width: 100%;
   z-index: $headerZIndex;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
 
   & > * {
     display: flex;

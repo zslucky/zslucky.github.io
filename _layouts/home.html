@@ -5,14 +5,16 @@ layout: base
 <main class="home">
   <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;Recent Blog Lists</h2>
   {% for post in site.posts %}
-    <div class="home_content-item">
+    <div class="content-item">
       <h3>
         <i class="fa fa-{{ post.icon }}" aria-hidden="true"></i>&nbsp;&nbsp;
         <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
       </h3>
       <h4>{{ post.chineseTitle | escape }}</h4>
       <p>
-        <a href="{{ post.url | relative_url }}" role="button">Read more</a>
+        <a href="{{ post.url | relative_url }}" role="button">
+          Read more&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </a>
         &nbsp;|&nbsp;
         <span>{{ post.date | date: "%Y-%m-%d" }}</span>
       </p>
