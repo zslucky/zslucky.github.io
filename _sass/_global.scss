@@ -13,6 +13,11 @@ body {
   font-family: 'Didact Gothic', sans-serif;
   min-height: 100%;
   position: relative;
+
+  a:hover {
+    color: $linkHoverFont;
+    text-decoration: none;
+  }
 }
 
 a {
@@ -20,7 +25,6 @@ a {
   font-weight: bold;
 }
 
-a:hover {
-  color: $linkHoverFont;
-  text-decoration: none;
+a:visited {
+  color: $linkFont;
 }
