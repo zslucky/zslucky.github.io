@@ -1,0 +1,14 @@
+.search {
+  border-radius: 0;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2rem 1rem 2rem;
+
+  @media only screen and (min-width: $boundSize) {
+    border-radius: 0 .8rem 0 0;
+  }
+
+  .gsc-input-box,
+  .gsc-search-button {
+    box-sizing: initial;
+  }
+}

@@ -16,8 +16,14 @@
   border-radius: 0;
   padding-top: 1.5rem;
 
-  @media only screen and (min-width: $boundSize) {
-    border-radius: 0 .8rem 0 0;
+  .gsc-webResult.gsc-result,
+  .gsc-control-cse {
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+  }
+
+  .gsc-adBlock {
+    display: none;
   }
 }
 

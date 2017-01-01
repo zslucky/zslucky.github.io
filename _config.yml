@@ -34,6 +34,11 @@ exclude:
   - Gemfile
   - Gemfile.lock
 
+collections:
+  archives:
+    output: true
+    permalink: /archives/:path/
+
 # ----------------------- Custom config ----------------------------
 # Custom config for plugin "jekyll-archives"
 jekyll-archives:
