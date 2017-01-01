@@ -12,3 +12,10 @@
     box-sizing: initial;
   }
 }
+
+.content-container {
+  div.gs-snippet {
+    background-color: $tagBackgroundColor;
+    border: solid .1rem $secondColor;
+  }
+}

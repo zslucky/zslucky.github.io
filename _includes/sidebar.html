@@ -4,7 +4,7 @@
     {% for category in site.categories %}
       <li>
         <i class="fa fa-caret-right" aria-hidden="true"></i>
-        <a href="/result.html?q={{ category | first }}">
+        <a href="/categories/{{ category | first }}">
           {{ category | first }}
         </a>
         <span class="badge">{{ category | last | size }}</span>
@@ -19,7 +19,7 @@
     {% for tag in site.tags %}
       <li>
         <span class="badge">{{ tag | last | size }}</span>
-        <a class='tag' href="/result.html?q={{ tag | first }}">
+        <a class='tag' href="/tags/{{ tag | first }}">
           {{ tag | first }}
         </a>
       </li>

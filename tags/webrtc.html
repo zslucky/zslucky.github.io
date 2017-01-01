@@ -1,10 +1,11 @@
 ---
 layout: base
+tagname: webrtc
 ---
 
 <main class="home">
-  <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.title }} Blogs</h2>
-  {% for post in site.categories[page.title] %}
+  <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.tagname }} Blogs</h2>
+  {% for post in site.tags[page.tagname] %}
     <div class="content-item">
       <h3>
         <i class="fa fa-{{ post.icon }}" aria-hidden="true"></i>&nbsp;&nbsp;

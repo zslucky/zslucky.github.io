@@ -29,25 +29,11 @@ markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
-  - jekyll-archives
 exclude:
   - Gemfile
   - Gemfile.lock
 
-collections:
-  archives:
-    output: true
-    permalink: /archives/:path/
-
 # ----------------------- Custom config ----------------------------
-# Custom config for plugin "jekyll-archives"
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: category
-    tag: tag
 
 # Custom values
 markdown_style: emacs
