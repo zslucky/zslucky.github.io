@@ -15,18 +15,12 @@ body {
   position: relative;
 }
 
-body {
-  a {
-    color: $linkFont;
-    font-weight: bold;
-  }
+a {
+  color: $linkFont;
+  font-weight: bold;
+}
 
-  a:hover {
-    color: $linkHoverFont;
-    text-decoration: none;
-  }
-
-  a:active {
-    color: $linkFont;
-  }
+a:hover {
+  color: $linkHoverFont;
+  text-decoration: none;
 }

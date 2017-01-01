@@ -59,4 +59,8 @@
       padding: 0 .3rem;
     }
   }
+
+  & > a:hover {
+    color: $linkHoverFont;
+  }
 }
