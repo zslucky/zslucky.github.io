@@ -4,6 +4,7 @@ title: How to use jekyll theme ?!
 chineseTitle: 如何使用jekyll主题？！
 icon: clone
 date:   2016-11-29 10:50:57 +0800
+published: false
 categories:
   - css
   - html

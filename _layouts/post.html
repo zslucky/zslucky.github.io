@@ -11,7 +11,7 @@ layout: base
      <i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.date | date: "%Y-%m-%d" }}
      &nbsp;|&nbsp;
      {% for tag in page.tags %}
-        <a class='tag' href="/tag/{{ tag }}">
+        <a class='tag post_header_tags' href="/tag/{{ tag }}">
           {{ tag }}
         </a>
       {% endfor %}

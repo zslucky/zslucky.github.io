@@ -36,4 +36,4 @@ exclude:
 # ----------------------- Custom config ----------------------------
 
 # Custom values
-markdown_style: emacs
+markdown_style: github

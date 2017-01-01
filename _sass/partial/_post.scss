@@ -1,10 +1,41 @@
 
 .post {
+  color: $postHeadFont;
   padding: 5.5rem;
 
   // Override and re-style the markdown.
   .highlight {
     white-space: pre-wrap;
+
+    code {
+      color: $normalFont;
+    }
+  }
+
+  blockquote {
+    background-color: $blockquoteBGColor;;
+    border-left: solid 5px $blockquoteBorderColor;
+    border-right: solid 2px $blockquoteBorderColor;
+    color: $blockquoteFontColor;
+    font-family: sans-serif, serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    letter-spacing: 0;
+    padding: 1.5rem 2.5rem 1.5rem 4.5rem;
+    word-break: break-word;
+  }
+
+  ul {
+    color: $listFontColor;
+  }
+
+  code {
+    color: $codeFontColor;
+  }
+
+  img {
+    display: block;
+    margin: auto;
   }
 }
 
@@ -23,4 +54,8 @@
   ul > li {
     display: inline-block;
   }
+}
+
+.post_header_tags {
+  text-transform: capitalize;
 }

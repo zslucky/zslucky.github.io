@@ -118,9 +118,9 @@ For signaling, this demo uses the Google App Engine `Channel API`, which enables
 
 对于`Signaling`部分，这个例子使用了Google App Engine的Channel API, 他可以让消息在javascript客户端之间获得。
 
-> `Channel API` will be turned off on October 31, 2017. See annoucement [https://cloud.google.com/appengine/docs/deprecations/channel](https://cloud.google.com/appengine/docs/deprecations/channel)
+> `Channel API` will be turned off on October 31, 2017. See [annoucement](https://cloud.google.com/appengine/docs/deprecations/channel)
 >
-> `Channel API`将会在2017/10/01被google关闭，看申明[https://cloud.google.com/appengine/docs/deprecations/channel](https://cloud.google.com/appengine/docs/deprecations/channel)
+> `Channel API`将会在2017/10/01被google关闭，看[申明](https://cloud.google.com/appengine/docs/deprecations/channel)
 
 ![AppRTC Architecture]({{ site.url }}/static/webrtc/chapt3-apprtcArchitecture.png)
 
