@@ -51,21 +51,21 @@ In other words, WebRTC needs four types of server-side functionality:
 - User discovery and communication.（用户发现与通讯）
 - Signaling.（发信号）
 - NAT/firewall traversal.（NAT／防火墙的穿越）
-- Relay servers in case peer-to-peer communication fails.（主机端之间通讯失败的接力服务器）
+- Relay servers in case peer-to-peer communication fails.（点到点通讯失败的中间接力服务器）
 
 `NAT` traversal, peer-to-peer networking, and the requirements for building a server app for user discovery and signaling, are beyond the scope of this article. Suffice to say that the `STUN` protocol and its extension `TURN` are used by the `ICE` framework to enable RTCPeerConnection to cope with `NAT` traversal and other network vagaries.
 
-`NAT` 穿越、端到端网络连接和一些必备条件来搭建一个让用户发现或者发信号的服务端APP，是超出这篇文章范围的。`ICE`框架的`STUN`协议和他的扩展`TURN`可以让`RTCPeerConnection`去应付`NAT`穿越和其他变幻莫测的网络。
+`NAT` 穿越、点到点网络连接和一些必备条件来搭建一个让用户发现或者发信号的服务端APP，是超出这篇文章范围的。`ICE`框架的`STUN`协议和他的扩展`TURN`可以让`RTCPeerConnection`去应付`NAT`穿越和其他变幻莫测的网络。
 
 `ICE` is a framework for connecting peers, such as two video chat clients. Initially, `ICE` tries to connect peers directly, with the lowest possible latency, via `UDP`. In this process, `STUN` servers have a single task: to enable a peer behind a `NAT` to find out its public address and port. (Google has a couple of `STUN` severs)
 
-`ICE`是一个用于端到端连接框架，比如两个视屏聊天的客户端。起初，`ICE`尝试通过UDP直接连接两端，尽可能利用最低的延时。在这个过程中，`STUN`服务器有一个单一的任务：让一个位于NAT背后的主机端可以去找出他的公网地址和端口。（谷歌有很多`STUN`服务器）
+`ICE`是一个用于点到点连接的框架，比如两个视屏聊天的客户端。起初，`ICE`尝试通过UDP直接连接多点，尽可能利用最低的延时。在这个过程中，`STUN`服务器有一个单一的任务：让一个位于NAT背后的主机端可以去找出他的公网地址和端口。（谷歌有很多`STUN`服务器）
 
 ![STUN]({{ site.url }}/static/webrtc/chapt3-stun.png)
 
 If UDP fails, `ICE` tries TCP: first HTTP, then HTTPS. If direct connection fails—in particular, because of enterprise NAT traversal and firewalls—ICE uses an intermediary (relay) TURN server. In other words, ICE will first use STUN with UDP to directly connect peers and, if that fails, will fall back to a TURN relay server. The expression 'finding candidates' refers to the process of finding network interfaces and ports.
 
-如果UDP失败了，`ICE`会尝试TCP：先HTTP，然后HTTPS。如果直接连接因特殊情况失败，原因是企业级NAT穿越和ICE防火墙使用了`TURN`作为中间件。换句话说，`ICE`会首先使用UDP的STUN来直接连接主机端，如果失败了，就会启用备用方案使用TURN服务器接力，表达式'finding candidates'退回到流程中的查找网络接口和端口号。
+如果UDP失败了，`ICE`会尝试TCP：先HTTP，然后HTTPS。如果直接连接因特殊情况失败，原因是企业级NAT穿越和ICE防火墙使用了`TURN`作为中间件。换句话说，`ICE`会首先使用UDP的STUN来做多点间的直连，如果失败了，就会启用备用方案使用TURN服务器接力，表达式'finding candidates'退回到流程中的查找网络接口和端口号。
 
 ![Data Path Ways]({{ site.url }}/static/webrtc/chapt3-datapathways.png)
 
@@ -251,7 +251,7 @@ function doCall() {
 
 The offer creation process here is similar to the no-signaling example above but, in addition, a message is sent to the remote peer, giving a serialized SessionDescription for the offer. This process is handled by `setLocalAndSendMessage()`:
 
-这个offer创建过程类似于no-signaling的例子，但是事实上一条消息被发送至了远程主机端，并给予offer一个序列化的SessionDescription，这个过程被`setLocalAndSendMessage()`所处理。
+这个offer创建过程类似于no-signaling的例子，但是事实上一条消息被发送至了远程端，并给予offer一个序列化的SessionDescription，这个过程被`setLocalAndSendMessage()`所处理。
 
 ~~~javascript
 function setLocalAndSendMessage(sessionDescription) {
@@ -344,6 +344,6 @@ And that's it! The caller and callee have discovered each other and exchanged in
 
 `WebRTC` as currently implemented only supports one-to-one communication, but could be used in more complex network scenarios: for example, with multiple peers each communicating each other directly, peer-to-peer, or via a Multipoint Control Unit (MCU), a server that can handle large numbers of participants and do selective stream forwarding, and mixing or recording of audio and video:
 
-`WebRTC`目前只实现了单对单的通讯，但是可以被应用在更复杂的场景：比如，多个主机端单对单相互直接连接，或者通过MCU，他能处理大量参与者，做先择性数据流转发，还有混合及记录音频视频。
+`WebRTC`目前只实现了1对1的通讯，但是可以被应用在更复杂的场景：比如，多个点1对1相互直连，或者通过MCU，他能处理大量参与者，做先择性数据流转发，还有混合及记录音频视频。
 
 ![MCU]({{ site.url }}/static/webrtc/chapt3-mcu.png)

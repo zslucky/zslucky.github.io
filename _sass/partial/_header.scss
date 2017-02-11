@@ -43,6 +43,9 @@
   flex: $headerNav;
   height: 4.2rem;
   line-height: 4.2rem;
+  & > a {
+    width: 8rem;
+  }
 }
 
 .header-social {
