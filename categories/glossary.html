@@ -1,0 +1,25 @@
+---
+layout: base
+categoryname: glossary
+---
+
+<main class="home">
+  <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.categoryname }} Blogs</h2>
+  {% for post in site.categories[page.categoryname] %}
+    <div class="content-item">
+      <h3>
+        <i class="fa fa-{{ post.icon }}" aria-hidden="true"></i>&nbsp;&nbsp;
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+      <h4>{{ post.chineseTitle | escape }}</h4>
+      <p>
+        <a href="{{ post.url | relative_url }}" role="button">
+          Read more&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </a>
+        &nbsp;|&nbsp;
+        <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+      </p>
+     {% if forloop.last == false %}<hr class="division">{% endif %}
+    </div>
+  {% endfor %}
+</main>
