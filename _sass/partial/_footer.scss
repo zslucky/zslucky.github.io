@@ -9,4 +9,8 @@
   right: 0;
   width: 100%;
   z-index: $footerZIndex;
+
+  .record-words {
+    color: $footerRemarkWords;
+  }
 }
