@@ -46,7 +46,7 @@ tags:
     - [**MBGD** - 小批量梯度下降法](#mbgd)
 - [**Bayes** - 贝叶斯](#bayes)
 - [**NLP** - 神经语言程序学](#nlp)
-
+- [**One-Hot Encoding** - 独热编码](#one-hot-encoding)
 ---
 
 ## Neuro Network
@@ -129,7 +129,7 @@ Sigmoid的改良版，Tanh是0均值的，数学形式如下：
 ![Supervised-Unsupervised-and-Reinforcement-learning]({{ site.url }}/static/deep-learning-glossary/supervised-unsupervised-and-reinforcement-learning.png)
 
 ### SVM
-SVM是一个有监督的学习模型，通常用来进行模式识别、分类以及回归分析。
+SVM(支持向量机)是一个有监督的学习模型，通常用来进行模式识别、分类以及回归分析。
 
 ---
 
@@ -174,3 +174,7 @@ Mini-batch Gradient Descent(小批量)。
 ## NLP
 
 NLP是神经语言程序学(Neuro-Linguistic Programming)。
+
+## One-Hot Encoding (1-hot)
+
+独热编码即 One-Hot 编码，又称一位有效编码，其方法是使用N位状态寄存器来对N个状态进行编码，每个状态都由他独立的寄存器位，并且在任意时候，其中只有一位有效。
