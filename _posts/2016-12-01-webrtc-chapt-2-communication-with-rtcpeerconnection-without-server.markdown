@@ -6,9 +6,9 @@ icon: exchange
 date:   2016-12-02 10:50:57 +0800
 published: true
 categories:
-  - javascript
-tags:
   - webrtc
+tags:
+  - javascript
 ---
 
 ---

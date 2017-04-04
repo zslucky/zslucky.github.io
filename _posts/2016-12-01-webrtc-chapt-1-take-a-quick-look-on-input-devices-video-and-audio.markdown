@@ -5,9 +5,9 @@ chineseTitle: WebRTC 第一章 - 简单快速看下终端输入设备（视频�
 icon: exchange
 date:   2016-11-30 10:50:57 +0800
 categories:
-  - javascript
-tags:
   - webrtc
+tags:
+  - javascript
 ---
 
 ---

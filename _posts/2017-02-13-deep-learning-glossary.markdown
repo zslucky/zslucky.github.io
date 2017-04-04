@@ -2,12 +2,12 @@
 layout: post
 title: Deep learning - Glossary (Continuously updated...)
 chineseTitle: 深度学习 - 术语 （持续更新...）
-icon: exchange
+icon: microchip
 date:   2017-02-17 10:50:57 +0800
 categories:
-  - glossary
-tags:
   - deep-learning
+tags:
+  - glossary
 ---
 
 ---
@@ -22,7 +22,9 @@ tags:
 
 - [**Neuro Network** - 神经网络](#neuro-network)
   - [**Layers** - 层](#layers)
-  - [**BP Neuro Network** - 前馈神经网络](#bp-neuro-network)
+  - [**MLPs** - 多层感知器](#mlps)
+  - [**Feedforward Neuro Network** - 前馈神经网络](#feedforward-neuro-network)
+    -[**BP** - 后向传播](#bp)
   - [**RNN** - 循环神经网络](#rnn)
     - [**LSTM** - Long Short Term 网络](#lstm)
   - [**CNN** - 卷积神经网络](#cnn)
@@ -55,13 +57,21 @@ tags:
 
 神经网络：输入层、输出层、隐藏层。
 
-### BP Neuro Network
+### MLPs
+
+多层感知器，使用的是Sigmoid神经元，非感知器。
+
+### Feedforward Neuro Network
 
 前馈神经网络
 
+#### BP
+
+后向传播
+
 ### RNN
 
-循环神经网络
+Recurrent Neural Networks, 循环神经网络
 
 #### LSTM
 

@@ -1,11 +1,11 @@
 ---
 layout: base
-categoryname: glossary
+tagname: css
 ---
 
 <main class="home">
-  <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.categoryname }} Blogs</h2>
-  {% for post in site.categories[page.categoryname] %}
+  <h2><i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;{{ page.tagname }} Blogs</h2>
+  {% for post in site.tags[page.tagname] %}
     <div class="content-item">
       <h3>
         <i class="fa fa-{{ post.icon }}" aria-hidden="true"></i>&nbsp;&nbsp;
