@@ -332,6 +332,8 @@ $$
 \Delta C \approx \frac{\partial C}{\partial v_1} \Delta + \frac{\partial C}{\partial v_2} \Delta v_2
 $$
 
+我们尝试去选择$$ \Delta v_1 $$和$$ \Delta v_2 $$来让$$ \Delta C $$为负，
+
 ---
 
 未完待续...
