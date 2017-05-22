@@ -23,8 +23,6 @@ tags:
 - [**Neuro Network** - 神经网络](#neuro-network)
   - [**Layers** - 层](#layers)
   - [**MLPs** - 多层感知器](#mlps)
-  - [**Feedforward Neuro Network** - 前馈神经网络](#feedforward-neuro-network)
-    -[**BP** - 后向传播](#bp)
   - [**RNN** - 循环神经网络](#rnn)
     - [**LSTM** - Long Short Term 网络](#lstm)
   - [**CNN** - 卷积神经网络](#cnn)
@@ -35,9 +33,6 @@ tags:
   - [**Tanh** - Tanh](#tanh)
   - [**ReLU** - ReLU函数](#relu)
   - [**Other Activations** - 其他激励](#other-activation)
-- [**Supervised Unsupervised and Reinforcement learning** - 有监督学习和无监督学习](#supervised-unsupervised-and-reinforcement-learning)
-  - [**SVM** - 支持向量机](#svm)
-  - [**KNN** - 邻近算法](#knn)
 - [**Training** - 训练](#training)
   - [**Weights and Bias** - 权重和偏置](#weights-and-bias)
   - [**Softmax Regression** - Softmax回归](#softmax-regression)
@@ -46,9 +41,8 @@ tags:
     - [**BGD** - 批量梯度下降法](#bgd)
     - [**SGD** - 随机梯度下降法](#sgd)
     - [**MBGD** - 小批量梯度下降法](#mbgd)
-- [**Bayes** - 贝叶斯](#bayes)
 - [**NLP** - 神经语言程序学](#nlp)
-- [**One-Hot Encoding** - 独热编码](#one-hot-encoding)
+
 
 ---
 
@@ -62,13 +56,6 @@ tags:
 
 多层感知器，使用的是Sigmoid神经元，非感知器。
 
-### Feedforward Neuro Network
-
-前馈神经网络
-
-#### BP
-
-后向传播
 
 ### RNN
 
@@ -84,7 +71,7 @@ Long-Short Terms.
 
 #### Convaluatin and Pooling
 
-卷积和池化
+卷积和池化（常用的max-pooling, average-pooling, L2-norm pooling)。
 
 ### GAN
 
@@ -129,21 +116,6 @@ Sigmoid的改良版，Tanh是0均值的，数学形式如下：
 
 ---
 
-## Supervised Unsupervised and Reinforcement learning
-
-监督学习：每个数据点被标记或者与一个类别或者感兴趣值相关联。分类标签的一个例子是将图像指定为“猫”或者“狗”。价值标签的一个例子是销售价格与二手车相关联。监督学习的目标是研究许多这样的标记示例，进而能够对未来的数据点进行预测，例如，确定新的照片与正确的动物（分类（classification））或者指定其他二手车的准确销售价格（回归（regression））。
-
-无监督学习：数据点没有标签对应。相反，一个无监督学习算法的目标是以一些方式组织数据或者表述它的结构。这意味着将其分组到集群内部，或者寻找不同的方式查看复杂数据，使其看起来更简单。
-
-强化学习：对应于每一个数据点，算法需要去选择一个动作。这是一种常见的机器人方法，在一个时间点的传感器读数集合是一个数据点，算法必须选择机器人的下一个动作。这也是很普通的物联网应用模式，学习算法接收一个回报信号后不久，反馈这个决定到底好不好。基于此，算法修改其策略为了达到更高的回报。
-
-![Supervised-Unsupervised-and-Reinforcement-learning]({{ site.url }}/static/deep-learning-glossary/supervised-unsupervised-and-reinforcement-learning.png)
-
-### SVM
-SVM(支持向量机)是一个有监督的学习模型，通常用来进行模式识别、分类以及回归分析。
-
----
-
 ## Training
 
 ### Weights and Bias
@@ -178,14 +150,6 @@ Mini-batch Gradient Descent(小批量)。
 
 ---
 
-## Bayes
-
-贝叶斯分类算法是统计学的一种分类方法，它是一类利用概率统计知识进行分类的算法。在许多场合，朴素贝叶斯(Naïve Bayes，NB)分类算法可以与决策树和神经网络分类算法相媲美，该算法能运用到大型数据库中，而且方法简单、分类准确率高、速度快。
-
 ## NLP
 
 NLP是神经语言程序学(Neuro-Linguistic Programming)。
-
-## One-Hot Encoding (1-hot)
-
-独热编码即 One-Hot 编码，又称一位有效编码，其方法是使用N位状态寄存器来对N个状态进行编码，每个状态都由他独立的寄存器位，并且在任意时候，其中只有一位有效。
